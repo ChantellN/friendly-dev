@@ -1,13 +1,17 @@
-import type { Route } from "./+types/index";
-
+import type { Route } from './+types/index';
+import Hero from '~/components/Hero';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "The Friendly Dev" },
-    { name: "description", content: "Custom website development" },
+    { title: 'The Friendly Dev' },
+    { name: 'description', content: 'Custom website development' },
   ];
 }
 
 export default function Home() {
-  return <section>My App</section>;
+  return (
+    <section>
+      <Hero name="Chantell" />
+    </section>
+  );
 }
