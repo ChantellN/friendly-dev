@@ -26,12 +26,24 @@ export async function loader({
     throw new Error('Failed to fetch projects or posts')
   }
 
-  const [projects, posts] = await Promise.all([
+  const [projectJson, posts] = await Promise.all([
     projectRes.json(),
     postRes.json()
   ])
 
-  return { projects, posts };
+  const projects = projectJson.data.map((item) => ({
+  id: item.id,
+  documentId: item.documentId,
+  title: item.title,
+  description: item.description,
+  image: item.image?.url ? `${import.meta.env.VITE_STRAPI_URL}${item.image.url}` : '/images/no-image.png',
+  url: item.url,
+  date: item.date,
+  category: item.category,
+  featured: item.featured
+}))
+
+return { projects, posts }
 }
 
 const HomePage = ({ loaderData }: Route.ComponentProps) => {
