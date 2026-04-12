@@ -7,7 +7,7 @@ type HeroProps = {
 
 const Hero: React.FC<HeroProps> = ({
   name = '[NAME]',
-  text = ' Front-end developer. Bootcamp grad. Former educator. Lifelong learner.',
+  text = ' Front-end developer. Former educator. Lifelong learner.',
 }) => {
   return (
     <header className="text-center py-20 px-4 bg-gray-900 text-white transition-colors duration-300">
